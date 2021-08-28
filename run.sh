@@ -68,6 +68,12 @@ case $1 in
     kubectl get services simple-jwt-api -o wide
     ;;
 
+  test-endpoint)
+    ENDPOINT="a24191f50989944738bced00a735cbb3-861273416.eu-west-1.elb.amazonaws.com"
+    TOKEN=`curl -d '{"email":"test-email@nonexistent.con","password":"thisisatestpassword"}' -H "Content-Type: application/json" -X POST ${ENDPOINT}/auth  | jq -r '.token'`
+    curl --request GET "${ENDPOINT}/contents" -H "Authorization: Bearer ${TOKEN}" | jq 
+    ;;
+
   # ********************************************* 
   # **** DEPLOYMENT COMMANDS (ORDER MATTERS) ****
 
