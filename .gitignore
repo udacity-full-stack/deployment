@@ -33,3 +33,7 @@ htmlcov/
 
 # run.sh
 .run_status
+
+# deployment
+deployment/
+.secrets
