@@ -57,6 +57,17 @@ case $1 in
     echo ${NEW_CONTAINER_ID} > .run_status
     ;;
 
+  # ***********************************
+  # **** AFTER DEPLOYMENT COMMANDS ****
+
+  get-nodes)
+    kubectl get nodes
+    ;;
+
+  get-endpoint)
+    kubectl get services simple-jwt-api -o wide
+    ;;
+
   # ********************************************* 
   # **** DEPLOYMENT COMMANDS (ORDER MATTERS) ****
 
